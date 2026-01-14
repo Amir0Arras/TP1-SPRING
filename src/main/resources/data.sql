@@ -31,3 +31,29 @@ INSERT INTO MEDICAMENT (NOM, CATEGORIE_CODE, QUANTITE_PAR_UNITE, PRIX_UNITAIRE, 
 INSERT INTO MEDICAMENT (NOM, CATEGORIE_CODE, QUANTITE_PAR_UNITE, PRIX_UNITAIRE, UNITES_EN_STOCK, UNITES_COMMANDEES, NIVEAU_DE_REAPPRO, INDISPONIBLE, imageURL) VALUES
 ('Lévofloxacine 500mg', 3, 'Boîte de 7 comprimés', 15.80, 160, 0, 18, true, 'https://images.unsplash.com/photo-1628771065518-0d82f1938462?w=400'),
 ('Clindamycine 300mg', 3, 'Boîte de 16 gélules', 13.20, 140, 0, 16, true, 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400');
+-- ==============================
+-- Dispensaires
+-- ==============================
+INSERT INTO DISPENSAIRE (CODE, NOM, ADRESSE, CODE_POSTAL, VILLE, REGION, PAYS, TELEPHONE, FAX, CONTACT, FONCTION) VALUES
+(DEFAULT, 'Dispensaire Central', '12 Rue Principale', '75001', 'Paris', 'Île-de-France', 'France', '+33123456789', '+33123456780', 'Dr. Dupont', 'Directeur'),
+(DEFAULT, 'Dispensaire Nord', '45 Avenue du Nord', '59000', 'Lille', 'Hauts-de-France', 'France', '+33322334455', '+33322334456', 'Dr. Martin', 'Chef de service'),
+(DEFAULT, 'Dispensaire Sud', '78 Boulevard Sud', '13000', 'Marseille', 'Provence-Alpes-Côte d''Azur', 'France', '+33455667788', '+33455667789', 'Dr. Bernard', 'Directeur');
+
+-- ==============================
+-- Commandes
+-- ==============================
+INSERT INTO COMMANDE (NUMERO, ENVOYEE_LE, SAISIE_LE, PORT, REMISE, DISPENSAIRE_CODE, CODE_POSTALE, REGION, VILLE, ADRESSE) VALUES
+(DEFAULT, '2026-01-10', '2026-01-08', 50.00, 5.00, 1, '75001', 'Île-de-France', 'Paris', '12 Rue Principale'),
+(DEFAULT, '2026-01-11', '2026-01-09', 30.00, 0.00, 2, '59000', 'Hauts-de-France', 'Lille', '45 Avenue du Nord'),
+(DEFAULT, '2026-01-12', '2026-01-10', 40.00, 10.00, 3, '13000', 'Provence-Alpes-Côte d''Azur', 'Marseille', '78 Boulevard Sud');
+
+-- ==============================
+-- Lignes de commande
+-- ==============================
+INSERT INTO LIGNE (ID, MEDICAMENT_REFERENCE, COMMANDE_NUMERO, QUANTITE) VALUES
+(DEFAULT, 1, 1, 10), -- Morphine 10mg pour commande 1
+(DEFAULT, 2, 1, 20), -- Doliprane Effervescent 1g pour commande 1
+(DEFAULT, 3, 2, 15), -- Efferalgan Vitamine C pour commande 2
+(DEFAULT, 4, 2, 5),  -- Étodolac 400mg pour commande 2
+(DEFAULT, 5, 3, 25), -- Flurbiprofène 100mg pour commande 3
+(DEFAULT, 6, 3, 10); -- Lévofloxacine 500mg pour commande 3
