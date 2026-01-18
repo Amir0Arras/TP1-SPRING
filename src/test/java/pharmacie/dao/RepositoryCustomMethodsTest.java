@@ -111,7 +111,7 @@ public class RepositoryCustomMethodsTest {
         assertTrue(commandesSaisieAfter.size() >= 3);
     }
 
-    @Test
+    @Test 
     public void testLigneCustomMethods() {
         // Récupérer une commande et un médicament
         Commande commande = commandeRepository.findAll().get(0);
