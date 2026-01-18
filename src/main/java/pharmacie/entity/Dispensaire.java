@@ -11,44 +11,38 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @Entity
-@Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
+@Getter @Setter @NoArgsConstructor @ToString
 public class Dispensaire {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)
     private Integer code;
 
-    @NonNull
     @NotBlank
     @Size(min = 1, max = 100)
     @Column(nullable = false, length = 100)
     private String nom;
 
-    @NonNull
     @NotBlank
     @Size(min = 1, max = 60)
     @Column(nullable = false, length = 60)
     private String adresse;
 
-    @NonNull
     @NotBlank
     @Size(min = 1, max = 10)
     @Column(name = "code_postal", nullable = false, length = 10)
     private String codePostal;
 
-    @NonNull
     @NotBlank
     @Size(min = 1, max = 15)
     @Column(nullable = false, length = 15)
     private String ville;
 
-    @NonNull
     @NotBlank
-    @Size(min = 1, max = 15)
-    @Column(nullable = false, length = 15)
+    @Size(min = 1, max = 50)
+    @Column(nullable = false, length = 50)
     private String region;
 
-    @NonNull
     @NotBlank
     @Size(min = 1, max = 100)
     @Column(nullable = false, length = 100)

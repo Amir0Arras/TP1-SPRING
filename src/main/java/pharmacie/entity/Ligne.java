@@ -12,7 +12,7 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @Entity
-@Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
+@Getter @Setter @NoArgsConstructor @ToString
 
 public class Ligne {
     @Id
@@ -23,7 +23,6 @@ public class Ligne {
     /* ==========================
        Relation vers Medicament
        ========================== */
-    @NonNull
     @ManyToOne(optional = false)
     @JoinColumn(
         name = "medicament_reference",         // colonne FK dans cette table
@@ -36,7 +35,6 @@ public class Ligne {
     /* ==========================
        Relation vers Commande
        ========================== */
-    @NonNull
     @ManyToOne(optional = false)
     @JoinColumn(
         name = "commande_numero",              // colonne FK dans cette table
@@ -49,7 +47,6 @@ public class Ligne {
     /* ==========================
        Quantité
        ========================== */
-    @NonNull
     @Min(1)
     @Column(nullable = false)
     private Integer quantite;

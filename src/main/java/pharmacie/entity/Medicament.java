@@ -7,20 +7,21 @@ import lombok.*;
 import java.math.BigDecimal;
 
 @Entity
-@Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
+@Getter @Setter @NoArgsConstructor @ToString
 public class Medicament {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Setter(AccessLevel.NONE) // la clé est autogénérée par la BD, On ne veut pas de "setter"
 	private Integer reference = null;
 
-	@NonNull
-	@Column(unique=true, length = 255)
+	@Column(unique=true, length = 255, nullable = false)
 	private String nom;
 
+	@Column(name = "quantite_par_unite", length = 255)
 	private String quantiteParUnite = "Une boîte de 12";
 
 	@PositiveOrZero
+	@Column(name = "prix_unitaire", precision = 10, scale = 2)
 	private BigDecimal prixUnitaire = BigDecimal.TEN;
 
 	/**
@@ -29,6 +30,7 @@ public class Medicament {
 	 */
 	@ToString.Exclude
 	@PositiveOrZero
+	@Column(name = "unites_en_stock")
 	private int unitesEnStock = 0;
 
 	/**
@@ -39,6 +41,7 @@ public class Medicament {
 	 */
 	@ToString.Exclude
 	@PositiveOrZero
+	@Column(name = "unites_commandees")
 	private int unitesCommandees = 0;
 
 	/**
@@ -48,21 +51,22 @@ public class Medicament {
 	 */
 	@ToString.Exclude
 	@PositiveOrZero
+	@Column(name = "niveau_de_reappro")
 	private int niveauDeReappro = 0;
 
 	/**
 	 * Indique si le médicament est indisponible
 	 */
 	@ToString.Exclude
+	@Column(name = "indisponible")
 	private boolean indisponible = false;
 
-	@Column(length = 500)
+	@Column(name = "image_url", length = 500)
 	private String imageURL;
 
 	@ManyToOne(optional = false)
-	@NonNull
+	@JoinColumn(name = "categorie_code", nullable = false)
 	@ToString.Exclude
-
 	private Categorie categorie ;
 
 }

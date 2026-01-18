@@ -15,7 +15,7 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @Entity
-@Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
+@Getter @Setter @NoArgsConstructor @ToString
 
 public class Commande {
     
@@ -25,24 +25,22 @@ public class Commande {
     @Setter(AccessLevel.NONE)
     private Integer numero;
 
-    @NonNull
     @NotNull
     @Column(name = "envoyee_le", nullable = false)
     private LocalDate envoyeeLe;
 
-    @NonNull
     @NotNull
     @Column(name = "saisie_le", nullable = false)
     private LocalDate saisieLe;
 
     @NotNull
     @Digits(integer = 16, fraction = 2)
-    @Column(precision = 18, scale = 2)
+    @Column(precision = 18, scale = 2, nullable = false)
     private BigDecimal port;
 
     @NotNull
     @Digits(integer = 8, fraction = 2)
-    @Column(precision = 10, scale = 2)
+    @Column(precision = 10, scale = 2, nullable = false)
     private BigDecimal remise;
 
     /* ==========================
@@ -66,8 +64,8 @@ public class Commande {
     private String codePostale;
 
     @NotBlank
-    @Size(max = 25)
-    @Column(length = 25, nullable = false)
+    @Size(max = 50)
+    @Column(length = 50, nullable = false)
     private String region;
 
     @NotBlank

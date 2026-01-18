@@ -10,17 +10,16 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 
 @Entity
-@Getter @Setter @NoArgsConstructor @RequiredArgsConstructor @ToString
+@Getter @Setter @NoArgsConstructor @ToString
 public class Categorie {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Setter(AccessLevel.NONE) // la clé est auto-générée par la BD, On ne veut pas de "setter"
 	private Integer code;
 
-	@NonNull
-	@Size(min = 1, max = 255)
-	@Column(unique=true, length = 255)
 	@NotBlank // pour éviter les libellés vides
+	@Size(min = 1, max = 255)
+	@Column(unique=true, length = 255, nullable = false)
 	private String libelle;
 
 	@Size(max = 255)
