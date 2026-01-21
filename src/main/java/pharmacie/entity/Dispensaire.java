@@ -71,4 +71,11 @@ public class Dispensaire {
     @Size(max = 100)
     @Column(length = 100)
     private String fonction;
+
+    /* ==========================
+       Relation avec Commandes (CASCADE DELETE)
+       ========================== */
+    @ToString.Exclude
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "dispensaire")
+    private List<Commande> commandes = new LinkedList<>();
 }

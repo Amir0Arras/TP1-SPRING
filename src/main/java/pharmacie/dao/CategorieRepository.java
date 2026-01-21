@@ -26,4 +26,5 @@ public interface CategorieRepository extends JpaRepository<Categorie, Integer> {
 	 * @return la liste des catégories dont le libellé contient substring
 	 */
 	List<Categorie> findByLibelleContaining(String substring);
-}
+	
+

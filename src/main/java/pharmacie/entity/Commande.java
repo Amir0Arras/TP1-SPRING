@@ -25,8 +25,7 @@ public class Commande {
     @Setter(AccessLevel.NONE)
     private Integer numero;
 
-    @NotNull
-    @Column(name = "envoyee_le", nullable = false)
+    @Column(name = "envoyee_le", nullable = true)
     private LocalDate envoyeeLe;
 
     @NotNull
@@ -77,5 +76,12 @@ public class Commande {
     @Size(max = 255)
     @Column(nullable = false)
     private String adresse;
+
+    /* ==========================
+       Relation avec Lignes (CASCADE DELETE)
+       ========================== */
+    @ToString.Exclude
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "commande")
+    private List<Ligne> lignes = new LinkedList<>();
 }
 
